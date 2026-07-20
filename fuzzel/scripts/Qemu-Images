@@ -1,0 +1,44 @@
+#!/bin/sh
+
+ROOT_DIR="$HOME/qemu-images"
+dir="$ROOT_DIR"
+
+while true; do
+    list=""
+    [ "$dir" != "$ROOT_DIR" ] && list="[ .. ]\n"
+
+    for f in "$dir"/*/; do
+        [ -d "$f" ] || continue
+        name=$(basename "$f")
+        list="${list}${name}\n"
+    done
+
+    for f in "$dir"/*; do
+        [ -f "$f" ] && [ -x "$f" ] || continue
+        name=$(basename "$f")
+        list="${list}${name}\n"
+    done
+
+    [ -z "$list" ] && list="[ .. ]\n"
+
+    choice=$(printf "$list" | fuzzel --dmenu --placeholder="Select a QEMU images to run...") || exit 0
+    [ -z "$choice" ] && exit 0
+
+    if [ "$choice" = "[ .. ]" ]; then
+        parent=$(dirname "$dir")
+        case "$parent" in
+            "$ROOT_DIR"/*|"$ROOT_DIR") dir="$parent" ;;
+            *) dir="$ROOT_DIR" ;;
+        esac
+        continue
+    fi
+
+    full="$dir/$choice"
+
+    if [ -d "$full" ]; then
+        dir="$full"
+    elif [ -f "$full" ]; then
+        "$full" &
+        exit 0
+    fi
+done

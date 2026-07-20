@@ -1,0 +1,17 @@
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  main = "ibl",
+
+  config = function()
+    vim.opt.cursorline = false
+
+    require("ibl").setup({
+      indent = {
+        char = "┆", -- or use │
+      },
+      scope = {
+        enabled = false,
+      },
+    })
+  end,
+}

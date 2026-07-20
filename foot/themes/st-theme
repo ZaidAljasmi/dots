@@ -1,0 +1,38 @@
+# -*- conf -*-
+# ST Original Colors
+[colors]
+foreground=ffffff
+background=000000
+
+regular0=000000
+regular1=ff0000
+regular2=33ff00
+regular3=ffff00
+regular4=0066ff
+regular5=cc00ff
+regular6=00ffff
+regular7=d0d0d0
+
+bright0=808080
+bright1=ff0000
+bright2=33ff00
+bright3=ffff00
+bright4=0066ff
+bright5=cc00ff
+bright6=00ffff
+bright7=ffffff
+
+16=ffcc00
+17=ff6600
+
+selection-foreground=ffffff
+selection-background=555555
+
+search-box-no-match=000000 ff0000
+search-box-match=ffffff 3c3c3c
+
+jump-labels=000000 ffcc00
+urls=0066ff
+
+[cursor]
+color=000000 ffffff

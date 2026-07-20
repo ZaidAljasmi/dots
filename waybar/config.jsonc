@@ -1,0 +1,149 @@
+{
+  "position": "bottom",
+  "spacing": 0,
+  "height": 0,
+  "reload_style_on_change": true,
+  "layer": "top", // or use overlay to show waybar on any window even whith used fullscreen
+  "custom/separator": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/separator2": {
+    "format": "-",
+    "interval": "once",
+    "tooltip": false
+  },
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  // "modules-center": [//"sway/window",
+  //   "custom/recording"],
+  "modules-right": [
+    "cpu",
+    "custom/separator2",
+    "temperature",
+    "custom/separator",
+    "memory",
+    // "custom/separator",
+    // "backlight",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "network",
+    "custom/separator",
+    // "sway/language",
+    // "custom/separator",
+    "battery",
+    "custom/separator",
+    "clock",
+    "tray"
+  ],
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "Bri {percent}%"
+  },
+  "sway/language": {
+    "format": "{}",
+    "max-length": 90,
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "tooltip-format": "Language: {long}"
+  },
+  // "sway/workspaces": {
+  //   "disable-scroll": false,
+  //   "format": "{icon}{name}",
+  //   "format-icons": {
+  //     "default": " ",
+  //     "urgent": "!",
+  //     "focused": "*"
+  //   }
+  // },
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "rewrite": {
+      "(.*) — (.*)": "$2",
+      "(.*) - (.*)": "$2",
+      "foot": "Terminal",
+      "firefox": "Firefox"
+    }
+  },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 10,
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "CPU {avg_frequency}",
+    "interval": 5,
+    "states": {
+      "critical": 90
+    }
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "tooltip": false,
+    "critical-threshold": 60,
+    "format": "{temperatureC}°C"
+  },
+  "memory": {
+    "format": "RAM {used:0.1f}",
+    "interval": 2,
+    "tooltip": false,
+    "states": {
+      "critical": 80
+    }
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 25,
+      "critical": 15
+    },
+    "format": "Bat {capacity}%",
+    "format-full": "Bat {capacity}%",
+    "format-charging": "Bat {capacity}% +",
+    "format-plugged": "Bat {capacity}%",
+    "interval": 1,
+  },
+  "network": {
+    // "format-wifi": "Wifi {signalStrength}%",
+    "format-wifi": "Net up",
+    "format-ethernet": "Net up",
+    "format-disconnected": "Net down",
+    "tooltip-format": "{essid}",
+    "interval": 3,
+    "tooltip": true
+  },
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 1, // %, can be a float
+    //"format": "Vol {volume}% - {format_source}",
+    "format": "Vol {volume}%",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰂲 {icon} {format_source}",
+    "format-muted": "Vol Muted",
+    //"format-source": "Mic {volume}%",
+    //"format-source-muted": "Mic Muted",
+    "on-click": "pavucontrol"
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%A %d}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%a %d %b - %I:%M %p}",
+    // "format": "{:%I:%M %p}",
+    "format-alt": "{:%m/%d/%Y}",
+    "calendar": {
+      "format": {
+        "today": "<span color='#d4b755ff'>{}</span>"
+      }
+    }
+  },
+  "custom/recording": {
+    "exec": "if pgrep -x obs >/dev/null && lsof -c obs 2>/dev/null | grep -E '\\.(mp4|mkv|mov)$' >/dev/null; then echo '{\"text\": \"[Recording]\", \"tooltip\": \"OBS Studio: Recording\"}'; else echo '{\"text\": \"\", \"tooltip\": \"\"}'; fi",
+    "interval": 1,
+    "return-type": "json",
+    "tooltip": true
+  }
+}

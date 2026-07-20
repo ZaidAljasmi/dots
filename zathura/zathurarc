@@ -1,0 +1,77 @@
+# Zathura config
+# ~/.config/zathura/zathurarc
+
+# --- General ---
+
+set synctex true
+set scroll-step 60
+# set adjust-open "width"
+set statusbar-home-tilde true
+set pages-per-row 1
+
+# Font
+set font "Iosevka Term 18"
+
+# Layout
+set window-title-basename "true"
+set statusbar-h-padding 00
+set statusbar-v-padding 00
+set page-padding 03
+
+# Keybindings
+map u scroll half-up 
+map d scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map p print
+map { navigate previous
+map } navigate next
+map TAB toggle_index
+
+# --- Colors ---
+
+# set recolor false 
+set search-hadjust true
+set recolor                   "false"
+
+set default-fg                rgba(255,255,255,1)
+set default-bg                rgba(29,29,32,1)
+
+set completion-bg             rgba(54,54,58,1)
+set completion-fg             rgba(255,255,255,1)
+set completion-highlight-bg   rgba(53,132,228,1)
+set completion-highlight-fg   rgba(29,29,32,1)
+set completion-group-bg       rgba(40,40,44,1)
+set completion-group-fg       rgba(255,255,255,1)
+
+set statusbar-fg              rgba(255,255,255,1)
+set statusbar-bg              rgba(46,46,50,1)
+
+set inputbar-fg               rgba(255,255,255,1)
+set inputbar-bg               rgba(46,46,50,1)
+
+set notification-bg           rgba(46,46,50,1)
+set notification-fg           rgba(255,255,255,1)
+set notification-error-bg     rgba(46,46,50,1)
+set notification-error-fg     rgba(246,97,81,1)
+set notification-warning-bg   rgba(46,46,50,1)
+set notification-warning-fg   rgba(249,240,107,1)
+
+set recolor-lightcolor        rgba(29,29,32,1)
+set recolor-darkcolor         rgba(255,255,255,1)
+
+set index-fg                  rgba(255,255,255,1)
+set index-bg                  rgba(29,29,32,1)
+set index-active-fg           rgba(255,255,255,1)
+set index-active-bg           rgba(54,54,58,1)
+
+set render-loading-bg         rgba(29,29,32,1)
+set render-loading-fg         rgba(255,255,255,1)
+
+set highlight-color           rgba(53,132,228,0.25)
+set highlight-active-color    rgba(53,132,228,0.39)
+

@@ -1,0 +1,7 @@
+require("user.config.options")
+require("user.config.keymaps")
+require("user.config.colorscheme")
+require("user.plugins.code_runner")
+require("user.plugins.vimtex")
+require("user.plugins.colorizer")
+require("user.plugins.autoparis").setup()

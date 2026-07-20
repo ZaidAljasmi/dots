@@ -1,0 +1,117 @@
+# ==== Background Settings ====
+
+# Background image path
+image=/home/zaid/Pictures/gruvbox-theme/road-3.jpg
+# Image scaling mode: fill, fit, center, tile, stretch
+scaling=fill
+
+# Background color behind image (Tokyonight dark)
+color=1d2021ff
+
+# ==== Fonts ====
+# Font family for text
+font=Iosevka Term
+
+# Text font size
+font-size=19
+
+# ==== Indicator Settings ====
+# Hide indicator
+# no-unlock-indicator
+
+# Keep indicator visible even when idle
+# indicator-idle-visible
+
+# Radius of the indicator circle (bigger)
+indicator-radius=80
+
+# Thickness of the indicator circle (thinner)
+indicator-thickness=5
+
+# Horizontal position of the indicator
+indicator-x-position=960
+
+# Vertical position of the indicator
+indicator-y-position=540
+
+# ==== Ring Colors (Tokyonight Palette) ====
+# ring-color=55759c
+# ring-clear-color=e0af68
+# ring-ver-color=9ece6a
+# ring-wrong-color=f7768eff
+# ring-caps-lock-color=0db9d7ff
+#
+# # ==== Inside Circle Colors ====
+# inside-color=24283bff
+# inside-clear-color=24283bff
+# inside-ver-color=24283bff
+# inside-wrong-color=24283bff
+# inside-caps-lock-color=0db9d7ff
+#
+# # ==== Line between Inside and Ring ====
+# line-color=414868ff
+# line-clear-color=9ece6aff
+# line-ver-color=9ece6a
+# line-wrong-color=f7768eff
+# line-caps-lock-color=0db9d7ff
+# line-uses-ring
+#
+# # ==== Text Colors ====
+# text-color=a9b1d6
+# text-clear-color=a9b1d6
+# text-ver-color=a9b1d6
+# text-wrong-color=a9b1d6
+# text-caps-lock-color=a9b1d6
+#
+# # ==== Backspace Highlight Colors ====
+# bs-hl-color=e0af68
+# caps-lock-bs-hl-color=0db9d7ff
+# caps-lock-key-hl-color=0db9d7ff
+#
+# # ==== Keyboard Layout ====
+# hide-keyboard-layout
+# # show-keyboard-layout
+# layout-bg-color=1f2335ff
+# layout-border-color=7aa2f7ff
+# layout-text-color=ffffffff
+
+# ==== Additional Options ====
+show-failed-attempts
+ignore-empty-password
+daemonize
+
+# ==== Blur Option ====
+# Some swaylock versions do not support blur in config
+# To enable blur, use CLI: swaylock -C ~/.config/swaylock/config --blur-background
+# blur-kern=<number> can be added in CLI if supported
+# Catppccin theme
+color=1d2021
+bs-hl-color=e78a4e
+caps-lock-bs-hl-color=e78a4e
+caps-lock-key-hl-color=a9b665
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+key-hl-color=a9b665
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=c8c0a8
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-color=7daea3
+ring-clear-color=e78a4e
+ring-caps-lock-color=d8a657
+ring-ver-color=7daea3
+ring-wrong-color=ea6962
+separator-color=00000000
+text-color=c8c0a8
+text-clear-color=e78a4e
+text-caps-lock-color=d8a657
+text-ver-color=7daea3
+text-wrong-color=ea6962
+

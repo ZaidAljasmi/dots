@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# swaybar status line — slstatus-style: read /proc and /sys directly via
+# bash builtins (read/printf), avoid forking external processes every tick.
+
+set -u
+
+printf '{"version":1}\n[\n'
+
+# ---- one-time detection (done once, not every tick) ----
+have_pactl=0
+command -v pactl >/dev/null 2>&1 && have_pactl=1
+
+thermal_zone=""
+for z in /sys/class/thermal/thermal_zone*/temp; do
+	[ -r "$z" ] && { thermal_zone="$z"; break; }
+done
+
+battery_dir=""
+for b in /sys/class/power_supply/BAT*; do
+	[ -r "$b/capacity" ] && { battery_dir="$b"; break; }
+done
+
+# ---- module functions: each sets a global *_TXT var, no subshells ----
+
+get_cpu() {
+	local load rest
+	read -r load rest < /proc/loadavg
+
+	local t="N/A"
+	if [ -n "$thermal_zone" ]; then
+		local raw
+		read -r raw < "$thermal_zone"
+		t=$((raw/1000))
+	fi
+	CPU_TXT="CPU ${load} - ${t}°C"
+}
+
+get_ram() {
+	local key val unit total=0 free=0 buffers=0 cached=0 shmem=0 sreclaim=0
+	while read -r key val unit; do
+		case "$key" in
+			MemTotal:) total=$val ;;
+			MemFree:) free=$val ;;
+			Buffers:) buffers=$val ;;
+			Cached:) cached=$val ;;
+			Shmem:) shmem=$val ;;
+			SReclaimable:) sreclaim=$val ;;
+		esac
+	done < /proc/meminfo
+	local used_kb=$((total-free-buffers-cached-sreclaim+shmem))
+	local gb_x10=$((used_kb*10/1024/1024))
+	RAM_TXT="RAM ${gb_x10:0:-1}.${gb_x10: -1}"
+	[ "${#gb_x10}" -eq 1 ] && RAM_TXT="RAM 0.${gb_x10}"
+}
+
+get_battery() {
+	if [ -z "$battery_dir" ]; then
+		BAT_TXT="Bat N/A"
+		return
+	fi
+	local cap status
+	read -r cap < "$battery_dir/capacity"
+	status=""
+	[ -r "$battery_dir/status" ] && read -r status < "$battery_dir/status"
+	if [ "$status" = "Charging" ]; then
+		BAT_TXT="Bat ${cap}% +"
+	else
+		BAT_TXT="Bat ${cap}%"
+	fi
+}
+
+get_net() {
+	local path iface state
+	NET_TXT="Net down"
+	for path in /sys/class/net/*; do
+		iface=${path##*/}
+		[ "$iface" = "lo" ] && continue
+		state=""
+		[ -r "$path/operstate" ] && read -r state < "$path/operstate"
+		if [ "$state" = "up" ]; then
+			NET_TXT="Net up"
+			return
+		fi
+	done
+}
+
+get_volume() {
+	VOL_TXT="Vol N/A"
+	[ "$have_pactl" -eq 0 ] && return
+	local raw
+	raw=$(pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null)
+	if [[ $raw =~ ([0-9]+)% ]]; then
+		VOL_TXT="Vol ${BASH_REMATCH[1]}%"
+	fi
+	local mute
+	mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null)
+	[[ $mute == *yes* ]] && VOL_TXT="Vol muted"
+}
+
+get_datetime() {
+	printf -v DT_TXT '%(%a %d %b - %I:%M %p)T' -1
+}
+
+first=1
+tick=0
+CPU_TXT="CPU 0% - N/A°C"
+RAM_TXT="RAM 0.0 GiB"
+while true; do
+	if [ "$first" -eq 1 ]; then
+		first=0
+	else
+		printf ','
+	fi
+
+	if [ $((tick % 5)) -eq 0 ]; then
+		get_cpu
+		get_ram
+	fi
+	get_volume
+	get_net
+	get_battery
+	get_datetime
+
+	printf '[{"full_text":"%s","name":"cpu","separator":true,"separator_block_width":20},' "$CPU_TXT"
+	printf '{"full_text":"%s","name":"ram","separator":true,"separator_block_width":20},' "$RAM_TXT"
+	printf '{"full_text":"%s","name":"volume","separator":true,"separator_block_width":20},' "$VOL_TXT"
+	printf '{"full_text":"%s","name":"network","separator":true,"separator_block_width":20},' "$NET_TXT"
+	printf '{"full_text":"%s","name":"battery","separator":true,"separator_block_width":20},' "$BAT_TXT"
+	printf '{"full_text":"%s","name":"clock"}]\n' "$DT_TXT"
+
+	tick=$((tick+1))
+	sleep 1
+done
+
+

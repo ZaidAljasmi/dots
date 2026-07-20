@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SCRIPT_DIR="$HOME/.config/fuzzel/scripts"
+SELF=$(basename "$0")
+
+choice=$(find "$SCRIPT_DIR" -maxdepth 1 -type f -executable ! -name "$SELF" -exec basename {} \; | fuzzel --dmenu --placeholder="Explore your scripts..." --prompt="Fuzzel Scripts: ")
+
+if [ -n "$choice" ]; then
+  "$SCRIPT_DIR/$choice"
+fi

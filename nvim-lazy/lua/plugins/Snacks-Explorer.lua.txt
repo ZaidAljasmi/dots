@@ -1,0 +1,48 @@
+return {
+  {
+    "folke/snacks.nvim",
+    opts = {
+      explorer = {
+        replace_netrw = true,
+        trash = true,
+      },
+
+      picker = {
+        sources = {
+          explorer = {
+            layout = {
+              preset = "sidebar",
+            },
+
+            hidden = true,
+            ignored = true,
+
+            win = {
+              list = {
+                keys = {
+                  ["<CR>"] = "confirm",
+                  ["l"] = "confirm",
+                  ["h"] = "explorer_close",
+                  ["H"] = "toggle_hidden",
+                  ["I"] = "toggle_ignored",
+                  ["Z"] = "explorer_close_all",
+                  ["."] = "explorer_focus",
+                },
+              },
+            },
+
+            tree = true,
+            watch = true,
+            follow_file = true,
+          },
+        },
+      },
+    },
+
+    config = function()
+      vim.keymap.set("n", "<leader>e", function()
+        require("snacks").explorer()
+      end, { desc = "فتح المستكشف" })
+    end,
+  },
+}

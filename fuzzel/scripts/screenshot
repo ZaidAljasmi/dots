@@ -1,0 +1,45 @@
+#!/bin/sh
+# Variables
+tmp_file="/tmp/shot_$(date +%s).png"
+out_dir="$HOME/Pictures/Screenshots"
+timestamp=$(date '+%Y-%m-%d %I-%M-%S %p')
+out_file="$out_dir/screenshot_$timestamp.png"
+main() {
+  # 1. Selection
+  mode=$(printf "Full Screen\nArea Selection\nActive Window" |
+    fuzzel -d -p "Capture: " --placeholder "Choose mode...")
+  [ -z "$mode" ] && exit 1
+  # 2. Capture with Error Handling
+  if [ "$mode" = "Full Screen" ]; then
+    grim "$tmp_file" || exit 1
+  elif [ "$mode" = "Active Window" ]; then
+    win_geom=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | select(.pid? != null) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
+    [ -z "$win_geom" ] && notify-send -t 2000 "Screenshot" "No active window found" && exit 1
+    grim -g "$win_geom" "$tmp_file" || exit 1
+  else
+    grim -g "$(slurp)" "$tmp_file" || exit 1
+  fi
+  # 3. Action Menu
+  action=$(printf "Save & Copy\nCopy Only\nDiscard" |
+    fuzzel -d -p "Action: " --placeholder "What to do with the shot?")
+  case "$action" in
+  "Save & Copy")
+    mkdir -p "$out_dir" || exit 1
+    mv "$tmp_file" "$out_file" || exit 1
+    wl-copy <"$out_file" || exit 1
+    notify-send -t 3000 -i "$out_file" "Screenshot" "Saved to: $out_file"
+    ;;
+  "Copy Only")
+    wl-copy <"$tmp_file" || exit 1
+    notify-send -t 2000 -i "$tmp_file" "Screenshot" "Copied to clipboard"
+    rm "$tmp_file"
+    ;;
+  *)
+    # Handle Discard (or any escape)
+    rm -f "$tmp_file"
+    notify-send -t 2000 "Screenshot" "Action discarded"
+    exit 0
+    ;;
+  esac
+}
+main "$@"

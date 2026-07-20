@@ -1,0 +1,46 @@
+return {
+  "nvim-tree/nvim-tree.lua",
+
+  init = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    vim.opt.termguicolors = true
+  end,
+
+  config = function()
+        vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
+            desc = "Toggle Explorer",
+            silent = true,
+        })
+        vim.keymap.set("n", "<leader>fe", "<cmd>NvimTreeFindFileToggle<CR>", {
+            desc = "Find File In Explorer",
+            silent = true,
+        })
+    require("nvim-tree").setup({
+      sort = {
+        sorter = "case_sensitive",
+      },
+
+      view = {
+        width = 30,
+      },
+
+      renderer = {
+        group_empty = true,
+
+        icons = {
+          show = {
+            file = false,
+            folder = false,
+            folder_arrow = false,
+            git = false,
+          },
+        },
+      },
+
+      filters = {
+        dotfiles = false,
+      },
+    })
+  end,
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if command -v fish >/dev/null; then
+  list_extra=$(fish -c "functions -n; alias" | cut -d' ' -f2)
+else
+  list_extra=$(bash -ic "alias" | sed -E "s/alias ([^=]+)=.*/\1/")
+fi
+
+cmd=$({
+  compgen -c
+  echo "$list_extra"
+} | sort -u | fuzzel --dmenu --placeholder="Run tools in terminal..." --prompt="RunTools: " --width 50 --lines 5 --line-height=19)
+
+if [ -n "$cmd" ]; then
+  ${TERMINAL:-st} -e $SHELL -ic "$cmd"
+fi

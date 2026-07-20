@@ -1,0 +1,117 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "Iosevka Term";
+  /* font-family: "JetBrainsMono Nerd Font Propo", monospace; */
+  font-size: 19px; /* or 16pt*/
+  font-weight: normal;
+  border: none;
+  padding: 0px;
+}
+window#waybar {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  background: #000000;
+  color: #ffffff;   /* or use #c 8 c 0 a 8 or #d3d2cf , or #bbbbbb,  Note: original color is #d 4 b e 9 8 */
+}
+window#waybar.hidden {
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+}
+tooltip {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #285577;
+}
+tooltip label {
+    color: #ffffff;
+}
+#backlight,
+#clock,
+#tray,
+#cpu,
+#temperature,
+#memory,
+#battery,
+#custom-seperator2,
+#pulseaudio {
+  /* margin: 2px 2px 0px 0px; */
+  /* padding: 2px 8px; */
+}
+#workspaces {
+  background-color: #222222;
+  margin: 0;
+  padding: 0px;
+}
+#workspaces button {
+  all: unset;
+  border: 1px solid #333333;
+  background-color: #222222;
+  color: #888888;
+  padding: 2 5px;
+  margin: 0;
+  min-width: 0px;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+#workspaces button.active {
+  border: 1px solid #333333;
+  background-color: #5f676a;
+  color: #ffffff;
+}
+#workspaces button.focused {
+  border: 1px solid #4c7899;
+  background-color: #285577;
+  color: #ffffff;
+}
+#workspaces button.urgent {
+  border: 1px solid #2f343a;
+  background-color: #900000;
+  color: #ffffff;
+}
+window#waybar #custom-separator {
+  /* color: #666666; */
+  color: transparent;
+  /* background-color: #666666; */
+  background-color: rgba(102, 102, 102, 0.5);
+  min-width: 1px;
+  font-size: 4px;
+  margin: 4px 5px;
+  padding: 0;
+}
+window#waybar #custom-separator2 {
+    margin: 0px 5px;
+    padding: 0;
+}
+
+#custom-seperator,
+#network,
+#battery,
+#memory,
+#tray,
+#clock,
+#cpu,
+#backlight,
+#temperature,
+#pulseaudio,
+#custom-recording,
+#language,
+#window {
+  padding-left:  3px;
+  padding-right: 3px;
+}
+#mode {
+  background-color: #900000;
+  border: 1px solid #2f343a;
+  padding-left:  5px;
+  padding-right: 5px;
+}
+#clock {
+  /* padding-right: 8px; */
+}
+

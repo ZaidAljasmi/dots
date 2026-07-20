@@ -1,0 +1,44 @@
+# image=/home/zaid/Pictures/habamax/wall1.jpg
+scaling=fill
+color=1c1c1cff
+# ==== Fonts ====
+font=Iosevka Term
+font-size=19
+# ==== Indicator Settings ====
+indicator-radius=80
+indicator-thickness=5
+indicator-x-position=960
+indicator-y-position=540
+# ==== Additional Options ====
+show-failed-attempts
+ignore-empty-password
+daemonize
+color=1c1c1c
+bs-hl-color=ffaf5f
+caps-lock-bs-hl-color=ffaf5f
+caps-lock-key-hl-color=5faf5f
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+key-hl-color=5faf5f
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=c7c7c7
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-color=5f87af
+ring-clear-color=ffaf5f
+ring-caps-lock-color=d7af87
+ring-ver-color=5f87af
+ring-wrong-color=af5f5f
+separator-color=00000000
+text-color=c7c7c7
+text-clear-color=ffaf5f
+text-caps-lock-color=d7af87
+text-ver-color=5f87af
+text-wrong-color=af5f5f

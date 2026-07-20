@@ -1,0 +1,16 @@
+#!/bin/bash
+
+query=$(fuzzel --dmenu --prompt="Web: " --width 40 --lines 0 --line-height=19 --anchor=top --y-margin=200 --placeholder="Search or Paste URL...")
+
+[[ -z "$query" ]] && exit 0
+
+URL_PATTERN="^(([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}|https?://|www\.)[^\ ]*$"
+
+if [[ "$query" =~ $URL_PATTERN ]]; then
+  if [[ ! "$query" =~ ^https?:// ]]; then
+    query="https://$query"
+  fi
+  xdg-open "$query"
+else
+  xdg-open "https://www.google.com/search?q=$query"
+fi

@@ -1,0 +1,53 @@
+# frameline
+set $rosewater #da8581
+# acme red
+set $red #a0342f
+# acme orange
+set $peach #f0ad4e
+# bar_bg_brown
+set $yellow #E3BE92
+# acme green
+set $green #065905
+# acme_bar_bg
+set $teal #aeeeee
+# acme_bar_inactive
+set $sky #eaffff
+# cursor
+set $lavender #444444
+# black
+set $text #000000
+# indent
+set $overlay2 #aaaaaa
+# gray
+set $overlay1 #777777
+# white
+set $surface0 #ffffff
+# acme_bg
+set $base #ffffea
+# bar_inactive_brown
+set $flamingo #EDD5B8
+# selected
+set $crust #eeee9e
+
+# rosewater مُغمّق 20%
+set $mauve #AE6A67
+# rosewater مُفتّح 15%
+set $pink #DF9795
+# red مُغمّق 20%
+set $maroon #802926
+# teal مُغمّق 20%
+set $sapphire #8BBEBE
+# sapphire مُغمّق 15% إضافية
+set $blue #76A1A1
+# gray مُغمّق 15%
+set $subtext1 #656565
+# gray مُغمّق 30%
+set $subtext0 #535353
+# gray مُغمّق 45%
+set $overlay0 #414141
+# crust مُفتّح 10%
+set $surface2 #F0F0A8
+# مزيج 50/50 بين base و crust
+set $surface1 #F7F7C4
+# base مُغمّق 8%
+set $mantle #EAEAD7

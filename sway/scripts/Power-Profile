@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+INTERVAL=5
+
+get_ac_online() {
+	for s in /sys/class/power_supply/*; do
+		[ -f "$s/type" ]   || continue
+		[ -f "$s/online" ] || continue
+		[ "$(cat "$s/type")" = "Mains" ] || continue
+		cat "$s/online"
+		return
+	done
+	echo 0
+}
+
+current=""
+while :; do
+	if [ "$(get_ac_online)" = "1" ]; then
+		new="performance"
+	else
+		new="balanced"
+	fi
+	if [ "$new" != "$current" ]; then
+		powerprofilesctl set "$new" 2>/dev/null \
+			|| printf 'powerctl: failed to set %s\n' "$new" >&2
+		current="$new"
+	fi
+	sleep "$INTERVAL"
+done

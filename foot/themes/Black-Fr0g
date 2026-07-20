@@ -1,0 +1,37 @@
+# -*- conf -*-
+[colors]
+foreground=d8dee9
+background=0b0f14
+
+regular0=2a2f38
+regular1=ff6b6b
+regular2=98c379
+regular3=e5c07b
+regular4=61afef
+regular5=c678dd
+regular6=56b6c2
+regular7=d8dee9
+
+bright0=4b5263
+bright1=ff7b72
+bright2=a6e3a1
+bright3=f9e2af
+bright4=7dcfff
+bright5=d19aff
+bright6=7fdbca
+bright7=ffffff
+
+16=f0c674
+17=ff9e64
+
+selection-foreground=d8dee9
+selection-background=2d333b
+
+search-box-no-match=0b0f14 ff6b6b
+search-box-match=d8dee9 2a2f38
+
+jump-labels=0b0f14 f0c674
+urls=61afef
+
+[cursor]
+color=0b0f14 d8dee9

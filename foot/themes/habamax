@@ -1,0 +1,29 @@
+[colors]
+foreground=c7c7c7
+background=1c1c1c
+regular0=1c1c1c
+regular1=af5f5f
+regular2=5faf5f
+regular3=af875f
+regular4=5f87af
+regular5=af87af
+regular6=5f8787
+regular7=c7c7c7
+bright0=585858
+bright1=d75f5f
+bright2=5fd75f
+bright3=ffaf5f
+bright4=87afaf
+bright5=d787d7
+bright6=5fd75f
+bright7=dadada
+16=d7af87
+17=767676
+selection-foreground=c7c7c7
+selection-background=3a3a3a
+search-box-no-match=1c1c1c af5f5f
+search-box-match=c7c7c7 585858
+jump-labels=1c1c1c ffaf5f
+urls=5f87af
+[cursor]
+color=1c1c1c b3b3b3

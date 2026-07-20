@@ -1,0 +1,92 @@
+#!/bin/sh
+
+# Power menu with customized W-Menu
+
+choice=$(
+  printf "Shutdown\nReboot\nSuspend\nLogout" | wmenu \
+    -p "Power Menu:" \
+    -f "JetBrainsMono Nerd Font Bold 15.5" \
+    -l 0 \
+    -i \
+    -N 1a1b26 \
+    -n a9b1d6 \
+    -M 55759c \
+    -m 1a1b26 \
+    -S 55759c \
+    -s 1a1b26
+)
+
+case $choice in
+"Reboot")
+  confirm=$(
+    printf "Yes\nNo" | wmenu \
+      -p "Reboot - Are you sure?" \
+      -f "JetBrainsMono Nerd Font Bold 15.5" \
+      -l 0 \
+      -i \
+      -N 1a1b26 \
+      -n a9b1d6 \
+      -M 55759c \
+      -m 1a1b26 \
+      -S 55759c \
+      -s 1a1b26
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl reboot
+  fi
+  ;;
+"Shutdown")
+  confirm=$(
+    printf "Yes\nNo" | wmenu \
+      -p "Shutdown - Are you sure?" \
+      -f "JetBrainsMono Nerd Font Bold 15.5" \
+      -l 0 \
+      -i \
+      -N 1a1b26 \
+      -n a9b1d6 \
+      -M 55759c \
+      -m 1a1b26 \
+      -S 55759c \
+      -s 1a1b26
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl poweroff
+  fi
+  ;;
+"Suspend")
+  confirm=$(
+    printf "Yes\nNo" | wmenu \
+      -p "Suspend - Are you sure?" \
+      -f "JetBrainsMono Nerd Font Bold 15.5" \
+      -l 0 \
+      -i \
+      -N 1a1b26 \
+      -n a9b1d6 \
+      -M 55759c \
+      -m 1a1b26 \
+      -S 55759c \
+      -s 1a1b26
+  )
+  if [ "$confirm" = "Yes" ]; then
+    systemctl suspend
+  fi
+  ;;
+"Logout")
+  confirm=$(
+    printf "Yes\nNo" | wmenu \
+      -p "Logout - Are you sure?" \
+      -f "JetBrainsMono Nerd Font Bold 15.5" \
+      -l 0 \
+      -i \
+      -N 1a1b26 \
+      -n a9b1d6 \
+      -M 55759c \
+      -m 1a1b26 \
+      -S 55759c \
+      -s 1a1b26
+  )
+  if [ "$confirm" = "Yes" ]; then
+    pkill -KILL -u "$USER"
+  fi
+  ;;
+esac

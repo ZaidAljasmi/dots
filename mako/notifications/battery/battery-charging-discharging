@@ -1,0 +1,19 @@
+#!/bin/sh
+
+ICON="/usr/share/icons/Tokyonight-Dark/status/symbolic/battery-medium-charging-symbolic.svg"
+ICON2="/usr/share/icons/Tokyonight-Dark/status/symbolic/battery-medium-symbolic.svg"
+APP_NAME="Power Status"
+
+if acpi -a | grep -q 'on-line'; then
+
+  notify-send -a "$APP_NAME" -u normal -i "$ICON" "Charger Connected" "Your laptop is now plugged in and charging."
+else
+
+  notify-send -a "$APP_NAME" -u normal -i "$ICON2" "Charger Disconnected" "Your laptop is running on battery power."
+fi
+
+# enter this script in  /etc/udev/rules.d/99-charger-alert.rules:
+# SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/bin/su - zaid -c '/home/zaid/.config/mako/notifications/battery/battery-charging-discharging'"
+# SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/bin/su - zaid -c '/home/zaid/.config/mako/notifications/battery/battery-charging-discharging'"
+#
+# and use this command to reload the udev rules:  # sudo udevadm trigger --subsystem-match=power_supply

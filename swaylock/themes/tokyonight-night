@@ -1,0 +1,47 @@
+# ==== Background Settings ====
+image=/home/zaid/Pictures/tokyonight/wall1.jpg
+scaling=fill
+color=1a1b26ff
+# ==== Fonts ====
+font=Iosevka Term
+font-size=19
+# ==== Indicator Settings ====
+indicator-radius=80
+indicator-thickness=5
+indicator-x-position=960
+indicator-y-position=540
+# ==== Additional Options ====
+show-failed-attempts
+ignore-empty-password
+daemonize
+
+color=1a1b26
+bs-hl-color=ff9e64
+caps-lock-bs-hl-color=ff9e64
+caps-lock-key-hl-color=9ece6a
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+key-hl-color=9ece6a
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=c0caf5
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-color=7aa2f7
+ring-clear-color=ff9e64
+ring-caps-lock-color=e0af68
+ring-ver-color=7aa2f7
+ring-wrong-color=f7768e
+separator-color=00000000
+text-color=c0caf5
+text-clear-color=ff9e64
+text-caps-lock-color=e0af68
+text-ver-color=7aa2f7
+text-wrong-color=f7768e
+

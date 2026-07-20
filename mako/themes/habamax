@@ -1,0 +1,16 @@
+default-timeout=08000
+background-color=#1c1c1c
+text-color=#c7c7c7
+border-color=#5f87af
+border-size=00001
+progress-color=over #1c1c1c
+font=Iosevka Term 15
+[urgency=high]
+default-timeout=08000
+border-color=#af5f5f
+icons=0
+width=400
+height=200
+margin=10
+padding=15
+

@@ -1,0 +1,30 @@
+set $rosewater #d8a657
+set $flamingo #e78a4e
+set $pink #d3869b
+set $mauve #d3869b
+set $red #ea6962
+set $maroon #ea6962
+set $peach #e78a4e
+set $yellow #d8a657
+set $green #a9b665
+set $teal #89b482
+set $sky #7daea3
+set $sapphire #7daea3
+set $blue #7daea3
+set $lavender #7daea3
+
+set $text #d4be98
+set $subtext1 #bdae93
+set $subtext0 #a89984
+
+set $overlay2 #928374
+set $overlay1 #7c6f64
+set $overlay0 #665c54
+
+set $surface2 #3c3836
+set $surface1 #32302f
+set $surface0 #282828
+
+set $base #1d2021
+set $mantle #1b1b1b
+set $crust #141617

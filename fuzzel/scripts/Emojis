@@ -1,0 +1,21 @@
+#!/bin/bash
+
+EMOJI_DB="$HOME/.config/fuzzel/scripts/standard-emojis.txt"
+
+[[ ! -f "$EMOJI_DB" ]] && exit 1
+
+chosen_line=$(cat "$EMOJI_DB" | fuzzel --dmenu \
+  --prompt="Emojis: " \
+  --placeholder="Explore your emojis..." \
+  --width=50 --lines=12 \
+  --font="JetBrainsMono Nerd Font:size=11")
+
+if [[ -n "$chosen_line" ]]; then
+  selected=$(echo "$chosen_line" | awk '{print $1}' | sed 's/[a-zA-Z0-9:]//g')
+
+  if [[ -z "$selected" ]]; then
+    selected=$(echo "$chosen_line" | grep -oP "^\X")
+  fi
+
+  echo -n "$selected" | wl-copy
+fi

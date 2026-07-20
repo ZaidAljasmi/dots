@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MUSIC_DIR="$HOME/Music"
+
+choice=$(find "$MUSIC_DIR" -type f \( -name "*.mp3" -o -name "*.flac" -o -name "*.wav" -o -name "*.m4a" \) -printf "%P\n" |
+  fuzzel --dmenu --placeholder="Explore your music..." --prompt="Music: ")
+
+if [ -n "$choice" ]; then
+  xdg-open "$MUSIC_DIR/$choice"
+fi

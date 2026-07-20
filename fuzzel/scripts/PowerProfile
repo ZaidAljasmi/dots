@@ -1,0 +1,20 @@
+#!/bin/bash
+
+options="Performance\nBalanced\nPower-Saver"
+
+choice=$(echo -e "$options" | fuzzel --dmenu --placeholder="" --prompt="Power Profile: " --width 40 --lines 3 --line-height=19)
+
+case "$choice" in
+"Performance")
+  powerprofilesctl set performance
+  notify-send "Power Profile" "Performance Mode Activated"
+  ;;
+"Balanced")
+  powerprofilesctl set balanced
+  notify-send "Power Profile" "Balanced Mode Activated"
+  ;;
+"Power-Saver")
+  powerprofilesctl set power-saver
+  notify-send "Power Profile" "Power-Saver Mode Activated"
+  ;;
+esac

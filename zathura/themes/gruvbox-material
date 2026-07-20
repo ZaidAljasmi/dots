@@ -1,0 +1,39 @@
+# orginal Gruvbox-Material theme plate :
+set default-fg                "#c8c0a8"
+set default-bg                rgba(29,32,33,1)
+
+set completion-bg             rgba(40,40,40,1)
+set completion-fg             "#c8c0a8"
+set completion-highlight-bg   rgba(215,166,87,1)
+set completion-highlight-fg   rgba(29,32,33,1)
+set completion-group-bg       rgba(40,40,40,1)
+set completion-group-fg       "#c8c0a8"
+
+set statusbar-fg              "#c8c0a8"
+set statusbar-bg              rgba(29,32,33,1)
+
+set inputbar-fg               "#c8c0a8"
+set inputbar-bg               rgba(29,32,33,1)
+
+set notification-bg           rgba(29,32,33,1)
+set notification-fg           "#c8c0a8"
+set notification-error-bg     rgba(29,32,33,1)
+set notification-error-fg     rgba(234,105,98,1)
+set notification-warning-bg   rgba(29,32,33,1)
+set notification-warning-fg   rgba(216,166,87,1)
+
+set recolor-lightcolor        rgba(29,32,33,1)
+set recolor-darkcolor         "#c8c0a8"
+
+set index-fg                  "#c8c0a8"
+set index-bg                  rgba(29,32,33,1)
+set index-active-fg           "#c8c0a8"
+set index-active-bg           rgba(40,40,40,1)
+
+set render-loading-bg         rgba(29,32,33,1)
+set render-loading-fg         "#c8c0a8"
+
+set highlight-color           rgba(131,165,152,0.3)
+set highlight-fg              "#c8c0a8"
+set highlight-active-color    rgba(215,166,87,0.3)
+
