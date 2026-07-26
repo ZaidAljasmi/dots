@@ -1,13 +1,5 @@
-default-timeout=08000
-background-color=#222222
-text-color=#ffffff
-border-color=#285577ff
-border-size=00002
-progress-color=over #285577
 font=Iosevka Term 15
 [urgency=high]
-default-timeout=08000
-border-color=#900000ff
 icons=1
 width=400
 height=200
