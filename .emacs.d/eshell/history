@@ -1,0 +1,17 @@
+ls
+clear
+fastfetch 
+clear
+exit
+ls
+cd MyNotes/
+tree
+clear
+ls
+cd
+clear
+ls
+Alsother-Disks            Downloads         MyNotes     Public     hello.cpp  passwords               test.c    waybar-choclate
+ls
+exit
+ls
